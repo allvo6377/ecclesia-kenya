@@ -1,0 +1,77 @@
+/* styles-editor.css — visual editor UI + parish image-replace affordances */
+
+/* ---- floating "Edit site" toggle (admins only) ---- */
+#ek-toggle{
+  position:fixed; right:18px; bottom:18px; z-index:9000; display:none;
+  align-items:center; gap:8px; padding:11px 16px; border:none; border-radius:999px;
+  background:var(--primary,#1462b8); color:#fff; font:600 14px/1 "Hanken Grotesk",system-ui,sans-serif;
+  box-shadow:0 8px 28px rgba(0,0,0,.22); cursor:pointer; transition:transform .12s ease, background .12s ease;
+}
+#ek-toggle:hover{ transform:translateY(-1px); }
+#ek-toggle.active{ background:#b4232f; }
+#ek-toggle.active span::after{ content:" — done"; }
+
+/* ---- editor panel ---- */
+#ek-panel{
+  position:fixed; right:18px; bottom:74px; z-index:9000; display:none; width:288px;
+  background:#fff; border:1px solid rgba(0,0,0,.1); border-radius:16px; padding:16px;
+  box-shadow:0 18px 50px rgba(0,0,0,.22); font:14px/1.4 "Hanken Grotesk",system-ui,sans-serif; color:#1a1a1a;
+}
+#ek-panel .ek-h{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+#ek-panel .ek-h b{ font-size:15px; }
+#ek-close{ border:1px solid rgba(0,0,0,.14); background:#f5f5f5; border-radius:8px; padding:5px 11px; cursor:pointer; font-weight:600; }
+#ek-panel .ek-hint{ font-size:12.5px; color:#666; margin-bottom:14px; }
+#ek-panel .ek-grp{ margin-bottom:13px; }
+#ek-panel .ek-lab{ font-size:12px; font-weight:600; color:#444; margin-bottom:6px; text-transform:uppercase; letter-spacing:.03em; }
+#ek-panel select{ width:100%; padding:8px 10px; border:1px solid rgba(0,0,0,.16); border-radius:9px; background:#fff; font:inherit; }
+#ek-colors{ display:flex; gap:7px; align-items:center; margin-bottom:6px; }
+#ek-colors button{ width:26px; height:26px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.14); cursor:pointer; }
+#ek-color-custom{ width:100%; height:30px; border:1px solid rgba(0,0,0,.16); border-radius:8px; background:#fff; cursor:pointer; }
+.ek-revert{ width:100%; padding:9px; border:1px solid #e4b4b8; color:#b4232f; background:#fdf1f2; border-radius:9px; cursor:pointer; font-weight:600; }
+
+/* ---- inline editing affordances ---- */
+body.ecclesia-edit .ek-editable{ outline:1px dashed rgba(20,98,184,.5); outline-offset:2px; border-radius:3px; cursor:text; transition:outline-color .12s; }
+body.ecclesia-edit .ek-editable:hover{ outline-color:var(--primary,#1462b8); background:rgba(20,98,184,.04); }
+body.ecclesia-edit .ek-editable:focus{ outline:2px solid var(--primary,#1462b8); background:rgba(20,98,184,.06); }
+body.ecclesia-edit img.ek-img-editable{ outline:2px dashed rgba(20,98,184,.6); outline-offset:2px; cursor:pointer; }
+body.ecclesia-edit img.ek-img-editable:hover{ outline-color:#b4232f; }
+body.ecclesia-edit .ek-selected{ outline:2px solid #b4232f !important; outline-offset:2px; }
+body.ecclesia-edit [data-ek-hidden]{ opacity:.35; outline:2px dotted #b4232f; position:relative; }
+
+/* ---- inspector toolbar ---- */
+#ek-inspector{
+  position:absolute; z-index:9100; display:none; background:#1a1a1a; color:#fff;
+  border-radius:10px; padding:6px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+  font:13px/1 "Hanken Grotesk",system-ui,sans-serif;
+}
+#ek-inspector .ek-i-row{ display:flex; gap:4px; align-items:center; margin:2px; }
+#ek-inspector button{ border:none; background:#333; color:#fff; border-radius:6px; padding:6px 9px; cursor:pointer; font-weight:600; }
+#ek-inspector button:hover{ background:var(--primary,#1462b8); }
+#ek-inspector label{ display:flex; gap:6px; align-items:center; padding:2px 6px; }
+#ek-inspector input[type=color]{ width:28px; height:22px; border:none; background:none; cursor:pointer; }
+
+/* ---- save flash ---- */
+.ek-flash{
+  position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(16px); z-index:9200;
+  background:#13361f; color:#d8f5e2; padding:9px 16px; border-radius:999px; font:600 13px "Hanken Grotesk",system-ui,sans-serif;
+  opacity:0; pointer-events:none; transition:opacity .2s, transform .2s;
+}
+.ek-flash.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+.ek-flash.bad{ background:#3a1414; color:#ffd9d9; }
+
+/* ---- parish image replace (on parish pages) ---- */
+.frame-editable{ position:relative; cursor:pointer; }
+.frame-edit-badge{
+  position:absolute; right:8px; bottom:8px; display:flex; align-items:center; gap:6px;
+  background:rgba(20,98,184,.92); color:#fff; padding:6px 10px; border-radius:8px;
+  font:600 12px "Hanken Grotesk",system-ui,sans-serif; opacity:0; transition:opacity .15s; pointer-events:none;
+}
+.frame-editable:hover .frame-edit-badge{ opacity:1; }
+
+/* loading splash */
+.loading-splash{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:48vh; color:#667; }
+.loading-splash p{ font:500 15px "Hanken Grotesk",system-ui,sans-serif; }
+
+/* small login link (forgot password) */
+.login-link{ background:none; border:none; color:var(--primary,#1462b8); font:600 13.5px "Hanken Grotesk",system-ui,sans-serif; cursor:pointer; margin-top:10px; }
+.login-link:hover{ text-decoration:underline; }
