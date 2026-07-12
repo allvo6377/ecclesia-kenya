@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Administrator sign-in — Ecclesia Kenya</title>
+  <script>
+    // /admin (or /admin/) -> open the app's administrator sign-in.
+    (function () {
+      var base = location.pathname.replace(/\/admin\/?$/i, "/");
+      location.replace(base + "#admin");
+    })();
+  </script>
+  <style>body{font-family:system-ui,Arial,sans-serif;color:#334;display:flex;min-height:80vh;align-items:center;justify-content:center;text-align:center}</style>
+</head>
+<body>
+  <p>Opening the administrator sign-in… <a href="../#admin">Continue &rarr;</a></p>
+</body>
+</html>
